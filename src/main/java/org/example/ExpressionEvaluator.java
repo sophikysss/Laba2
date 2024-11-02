@@ -15,4 +15,24 @@ public class ExpressionEvaluator
         precedence.put('*', 2);
         precedence.put('/', 2);
     }
+    public void setVariable(String name, double value)
+    {
+        variables.put(name, value);
+    }
+
+    private double applyOperator(char operator, double b, double a) throws Exception {
+        switch (operator) {
+            case '+':
+                return a + b;
+            case '-':
+                return a - b;
+            case '*':
+                return a * b;
+            case '/':
+                if (b == 0) throw new Exception("Деление на ноль");
+                return a / b;
+            default:
+                throw new Exception("Неизвестный оператор: " + operator);
+        }
+    }
 }
