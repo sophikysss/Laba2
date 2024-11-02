@@ -4,19 +4,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
-public class ExpressionEvaluator
-{
+public class ExpressionEvaluator {
     private static final Map<Character, Integer> precedence = new HashMap<>();
     private final Map<String, Double> variables = new HashMap<>();
-    static
-    {
+
+    static {
         precedence.put('+', 1);
         precedence.put('-', 1);
         precedence.put('*', 2);
         precedence.put('/', 2);
     }
-    public void setVariable(String name, double value)
-    {
+
+    public void setVariable(String name, double value) {
         variables.put(name, value);
     }
 
@@ -33,6 +32,24 @@ public class ExpressionEvaluator
                 return a / b;
             default:
                 throw new Exception("Неизвестный оператор: " + operator);
+        }
+    }
+
+    private double evaluateExpression(String expression) throws Exception
+    {
+        Stack<Double> values = new Stack<>();
+        Stack<Character> operators = new Stack<>();
+
+        for (int i = 0; i < expression.length(); i++)
+        {
+            char token = expression.charAt(i);
+
+            // Пропуск пробелов
+            if (token == ' ')
+            {
+                continue;
+            }
+
         }
     }
 }
