@@ -50,6 +50,40 @@ public class ExpressionEvaluator {
                 continue;
             }
 
+
+        if (Character.isDigit(token) || token == '.')
+        {
+            StringBuilder number = new StringBuilder();
+            while (i < expression.length() && (Character.isDigit(expression.charAt(i)) || expression.charAt(i) == '.'))
+            {
+                number.append(expression.charAt(i++));
+            }
+            values.push(Double.parseDouble(number.toString()));
+            i--;
+        }
+        else if (Character.isLetter(token))
+        {
+            String varName = String.valueOf(token);
+            if (!variables.containsKey(varName))
+            {
+                throw new Exception("Неизвестная переменная: " + varName);
+            }
+            values.push(variables.get(varName));
+        }
+        else if (precedence.containsKey(token))
+        {
+            while (!operators.isEmpty() && precedence.get(operators.peek()) >= precedence.get(token))
+            {
+                values.push(applyOperator(operators.pop(), values.pop(), values.pop()));
+            }
+            operators.push(token);
         }
     }
+    while (!operators.isEmpty())
+    {
+        values.push(applyOperator(operators.pop(), values.pop(), values.pop()));
+    }
+
+        return values.pop();
+}
 }
