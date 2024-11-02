@@ -86,4 +86,13 @@ public class ExpressionEvaluator {
 
         return values.pop();
 }
+    public double evaluate(String expression) throws Exception
+    {
+        for (Map.Entry<String, Double> entry : variables.entrySet())
+        {
+            expression = expression.replace(entry.getKey(), entry.getValue().toString());
+        }
+
+        return evaluateExpression(expression);
+    }
 }
