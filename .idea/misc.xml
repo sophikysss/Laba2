@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="JavadocGenerationManager">
+    <option name="OUTPUT_DIRECTORY" value="$USER_HOME$/.jupyter" />
+    <option name="OPTION_SCOPE" value="public" />
+    <option name="LOCALE" value="https://github.com/sophikysss/Laba2" />
+    <option name="OPEN_IN_BROWSER" value="false" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
